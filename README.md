@@ -1,5 +1,9 @@
 # fff (*Fucking Fast File-Manager*)
 
+## About
+
+This is a fork of dylanaraps original version of [fff](https://github.com/dylanaraps/fff).
+
 A simple file manager written in `bash`.
 
 - It's Fucking Fast 🚀
@@ -7,7 +11,7 @@ A simple file manager written in `bash`.
 - Smooth Scrolling (*using **vim** keybindings*)
 - Works on **Linux**, **BSD**, **macOS**, **Haiku** etc.
 - Supports `LS_COLORS`!
-- File Operations (*copy, paste, cut, **ranger style bulk rename**, etc*) <img src="https://i.imgur.com/tjIWUjf.jpg" alt="img" height="213px" align="right"/>
+- File Operations (*copy, paste, cut, **ranger style bulk rename**, etc*)
 - Instant as you type search
 - Tab completion for all commands!
 - Automatic CD on exit (*see [setup](#cd-on-exit)*)
@@ -22,7 +26,6 @@ A simple file manager written in `bash`.
 
 * [Dependencies](#dependencies)
 * [Installation](#installation)
-    * [Distros](#distros)
     * [Manual](#manual)
     * [CD on Exit](#cd-on-exit)
         * [Bash and Zsh](#bash-and-zsh)
@@ -56,16 +59,6 @@ A simple file manager written in `bash`.
 
 
 ## Installation
-
-### Distros
-
-- KISS Linux (based): `kiss b fff`
-- FreeBSD: `pkg install fff`
-- Haiku: `pkgman install fff`
-- macOS: `brew install fff`
-- Nix: `nix-env -iA fff`
-- Void Linux: `xbps-install -S fff`
-- Arch Linux: `pacman -S fff`
 
 ### Manual
 
@@ -391,6 +384,3 @@ See: [**`fff.vim`**](https://github.com/dylanaraps/fff.vim)
 
 <sup><sub>dont touch my shrug</sub></sup>
 
-## About
-
-This is a fork of dylanaraps original version of [fff](https://github.com/dylanaraps/fff).
