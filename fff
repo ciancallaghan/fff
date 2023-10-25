@@ -375,27 +375,23 @@ draw_dir() {
     ((y=scroll_new_pos))
 }
 
-draw_img() {
-    # Draw an image file on the screen using chafa.
-
-    # File isn't an image file, do nothing.
-    get_mime_type "${list[scroll]}"
-    [[ $mime_type != image/* ]] &&
-        return
+preview() {
+	# If file is directory, do nothing
+	if [[ -d "${list[scroll]}" ]]; then
+		return
+	fi
 
     clear_screen
-    status_line "${list[scroll]}"
+	reset_terminal
 
     # Add a small delay to fix issues in VTE terminals.
     ((BASH_VERSINFO[0] > 3)) &&
         read "${read_flags[@]}" -srn 1
 
-    # Display the image.
-    chafa "${list[scroll]}"
+	# Display Preview
+    "${FFF_PREVIEWER:-less}" "${list[scroll]}"
 
-    # Wait for user input.
-    read -ern 1
-
+	setup_terminal
     redraw
 }
 
@@ -451,7 +447,7 @@ list_help() {
         "${FFF_KEY_SHELL:-!}: open shell in current dir"
         ''
         "${FFF_KEY_ATTRIBUTES:-x}: view file/dir attributes"
-        "${FFF_KEY_IMAGE:-i}: display image with chafa"
+        "${FFF_KEY_PREVIEW:-w}: display file preview"
         ''
         'down:  scroll down'
         'up:    scroll up'
@@ -1068,10 +1064,10 @@ key() {
             }
         ;;
 
-        # Show image in terminal.
-        ${FFF_KEY_IMAGE:=i})
+        # Show preview in terminal.
+        ${FFF_KEY_PREVIEW:=w})
 			((helping)) && return
-            draw_img
+            preview
         ;;
 
         # Go to dir.

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+case "$1" in
+	*.jpg | *.png | *.gif)
+		chafa --clear "$1"
+		read -ern 1
+		;;
+	*.mp3)
+		mpv --no-video "$1"
+		;;
+	*.pdf)
+		pdftotext "$1" - | less
+		;;
+	*)
+		less "$1"
+		;;
+esac

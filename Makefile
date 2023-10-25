@@ -12,6 +12,7 @@ install:
 	@cp -p fff $(DESTDIR)$(PREFIX)/bin/fff
 	@cp -p fff.1 $(DESTDIR)$(MANDIR)/man1
 	@cp -p README.md $(DESTDIR)$(DOCDIR)
+	@cp -p -r examples $(DESTDIR)$(DOCDIR)
 	@chmod 755 $(DESTDIR)$(PREFIX)/bin/fff
 
 uninstall:

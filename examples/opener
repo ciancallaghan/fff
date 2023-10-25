@@ -1,0 +1,42 @@
+#!/bin/bash
+
+is_img_extension() {
+	grep -iE '\.(jpe?g|png|gif|svg|jxl|webp|tiff|heif|avif|ico|bmp|pam|pbm|ppm|tga|qoi|ff)$'
+}
+
+listfiles() {
+	find -L "$1" -maxdepth 1 -type f -print |
+		is_img_extension | sort | tee "$tmp"
+}
+
+open_img() {
+	file="$1"; shift;
+	if echo "$file" | is_img_extension >/dev/null 2>&1; then
+		trap 'rm -f $tmp' EXIT
+		count="$(listfiles "///${file%/*}" | grep -nF "$file")"
+	fi
+	if [ -n "$count" ]; then
+		nsxiv -a -i -n "${count%%:*}" "$@" -- < "$tmp"
+	else
+		nsxiv -a "$@" -- "$file"
+	fi
+}
+
+case "$(file --mime-type -Lb "$1")" in
+	*image*)
+		tmp="/tmp/nsxiv_rifle_$$"
+		open_img "$1"
+		;;
+	*video*)
+		mpv "$1" 
+		;;
+	*music*)
+		mpv "$1"
+		;;
+	*pdf*)
+		zathura "$1"
+		;;
+	*)
+		"$EDITOR" "$1"
+		;;
+esac
