@@ -16,9 +16,6 @@ k: scroll up
 h: go to parent dir
 l: go to child dir
 
-enter: go to child dir
-backspace: go to parent dir
-
 \-: go to previous dir\.
 
 g: go to top
@@ -34,27 +31,22 @@ e: refresh current dir
 !: open shell in current dir
 
 x: view file/dir attributes
-i: display image with chafa
+i: display image with previewer
 
-down:  scroll down
-up:    scroll up
-left:  go to parent dir
-right: go to child dir
-
-f: new file
-n: new dir
+n: new file
+N: new dir
 r: rename
 X: toggle executable
 
 y: mark copy
 m: mark move
-d: mark trash (~/.local/share/fff/trash/)
+d: mark trash ($XDG_DATA_HOME/Trash)
 s: mark symbolic link
 b: mark bulk rename
 
 Y: mark all for copy
 M: mark all for move
-D: mark all for trash (~/.local/share/fff/trash/)
+D: mark all for trash ($XDG_DATA_HOME/Trash)
 S: mark all for symbolic link
 B: mark all for bulk rename
 
@@ -65,8 +57,6 @@ c: clear file selections
 
 q: exit with 'cd' (if enabled) or exit help
 Ctrl+C: exit without 'cd'
-
-?: show help
 .
 .fi
 .
@@ -103,6 +93,9 @@ export EDITOR="vim"
 
 # File Opener
 export FFF_OPENER="xdg\-open"
+
+# File Previewer
+export FFF_PREVIEWER="less"
 
 # File Attributes Command
 export FFF_STAT_CMD="stat"
@@ -163,14 +156,9 @@ For more information see:
 
 # Go to child directory.
 export FFF_KEY_CHILD1="l"
-export FFF_KEY_CHILD2=$'\e[C' # Right Arrow
-export FFF_KEY_CHILD3=""      # Enter / Return
 
 # Go to parent directory.
 export FFF_KEY_PARENT1="h"
-export FFF_KEY_PARENT2=$'\e[D' # Left Arrow
-export FFF_KEY_PARENT3=$'\177' # Backspace
-export FFF_KEY_PARENT4=$'\\b'   # Backspace (Older terminals)
 
 # Go to previous directory.
 export FFF_KEY_PREVIOUS="-"
@@ -183,11 +171,9 @@ export FFF_KEY_SHELL="!"
 
 # Scroll down.
 export FFF_KEY_SCROLL_DOWN1="j"
-export FFF_KEY_SCROLL_DOWN2=$'\e[B' # Down Arrow
 
 # Scroll up.
 export FFF_KEY_SCROLL_UP1="k"
-export FFF_KEY_SCROLL_UP2=$'\e[A'   # Up Arrow
 
 # Go to top and bottom.
 export FFF_KEY_TO_TOP="g"
@@ -216,8 +202,8 @@ export FFF_KEY_PASTE="p"
 export FFF_KEY_CLEAR="c"
 
 export FFF_KEY_RENAME="r"
-export FFF_KEY_MKDIR="n"
-export FFF_KEY_MKFILE="f"
+export FFF_KEY_MKFILE="n"
+export FFF_KEY_MKDIR="N"
 
 ### Miscellaneous
 
@@ -230,6 +216,8 @@ export FFF_KEY_EXECUTABLE="X"
 # Toggle hidden files.
 export FFF_KEY_HIDDEN="."
 
+# Show preview.
+export FFF_KEY_PREVIEW="i"
 .
 .fi
 

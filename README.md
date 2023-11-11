@@ -154,8 +154,6 @@ c: clear file selections
 
 q: exit with 'cd' (if enabled).
 Ctrl+C: exit without 'cd'.
-
-?: show help
 ```
 
 ## Customization
