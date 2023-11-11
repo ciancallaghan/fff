@@ -226,7 +226,7 @@ print_line() {
     local suffix
 
     # If the dir item doesn't exist, end here.
-    elif [[ -z ${list[$1]} ]]; then
+    if [[ -z ${list[$1]} ]]; then
         return
 
     # Directory.
