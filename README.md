@@ -1,14 +1,3 @@
-## Using `fff` in vim/neovim as a file picker
-
-See: [**`fff.vim`**](https://github.com/dylanaraps/fff.vim)
-
-
-## Why?
-
-¯\\_(ツ)_/¯
-
-<sup><sub>dont touch my shrug</sub></sup>
-
 # fff (Fucking Fast File-Manager)
 
 ## About
