@@ -1,4 +1,4 @@
-#!/usr/bin/env/bash
+#!/usr/bin/env bash
 #
 # fff - fucking fast file-manager
 
@@ -491,11 +491,13 @@ key() {
                 scroll=0
                 redraw
             }
+			;;
         ${FFF_KEY_TO_BOTTOM:=G})
             ((scroll != list_total)) && {
                 ((scroll=list_total))
                 redraw
             }
+			;;
         ${FFF_KEY_PREVIOUS:=-})
             open "$OLDPWD"
 			;;
